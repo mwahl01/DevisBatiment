@@ -9,7 +9,7 @@ package fr.insa.wahl.projet_56;
  * @author Amadou Coulibaly
  */
 public class Mur {
-    int idMur;
+    int idMur, nbrePortes, nbreFenetres;
     Coin debut, fin;
     
     
@@ -38,6 +38,15 @@ public class Mur {
         double hsp=Lire.d();
         return(this.longueur()*hsp);
     }
+    
+    /*double montantRevetement(){
+        System.out.println("Entrer le nombre de porte présente sur le mur");
+        nbrePortes=Lire.i();
+        System.out.println("Entrer le nombre de fenêtre présente sur le mur");
+        nbreFenetres=Lire.i();
+        return((this.surface()-(porte.surface())*nbrePortes-(fenetre.surface())*nbreFenetre)*x.prix);
+    }
+    */
     @Override
     public String toString() {
         return "Mur{" + "idMur=" + idMur + ", debut=" + debut + ", fin=" + fin + '}';
