@@ -27,4 +27,9 @@ public class Ouverture {
     {
         System.out.println("Ouverture : id="+this.idOuverture+" largeur="+this.dimX+" hauteur="+this.dimY);
     }
+    
+    @Override
+    public String toString(){
+        return "Ouverture{" + "idOuverture=" + idOuverture + ", dimX=" + dimX + ", dimY=" + dimY + '}';
+    }
 }
