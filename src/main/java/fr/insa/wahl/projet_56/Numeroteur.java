@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fr.insa.wahl.projet_56;
 
 import java.util.ArrayList;
@@ -9,11 +5,9 @@ import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
 
-/**
- *
- * @author Elève
- * @param <Obj>
- */
+
+ // @param <Obj>
+
 public class Numeroteur <Obj> {
     
     private List<Obj> objets;

@@ -1,45 +1,37 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fr.insa.wahl.projet_56;
 
-/**
- *
- * @author thoma
- */
 public class Sol {
     int idSol;
-    Coin a, b, c , d;
+    Coin coinSupDr, coinSupGa, coinInfDr , coinInfGa;
     
    
-    Sol(int id, Coin ac, Coin bc, Coin cc, Coin dc)
+    Sol(int id, Numeroteur<Coin> listeCoinSol)
     {
         this.idSol=id;
-        this.a=ac;
-        this.b=bc;
-        this.c=cc;
-        this.d=dc;
+        this.coinSupGa=listeCoinSol.getObject(0);
+        this.coinSupDr=listeCoinSol.getObject(1);
+        this.coinInfGa=listeCoinSol.getObject(2);
+        this.coinInfDr=listeCoinSol.getObject(3);
     }
     
     
     void afficher()
     {System.out.println("==== Sol =====");
-        this.a.afficher();
-        this.b.afficher();    
-        this.c.afficher();
-        this.d.afficher(); 
+        this.coinSupGa.afficher();
+        this.coinSupDr.afficher();    
+        this.coinInfGa.afficher();
+        this.coinInfDr.afficher(); 
     }
     
     
     double longueur()
     {
-        return(Math.sqrt((this.b.cx-this.a.cx)*(this.b.cx-this.a.cx) + (this.b.cy-this.a.cy)*(this.b.cy-this.a.cy)));
+        return(Math.sqrt((this.coinSupDr.cx-this.coinSupGa.cx)*(this.coinSupDr.cx-this.coinSupGa.cx) + (this.coinSupDr.cy-this.coinSupGa.cy)*(this.coinSupDr.cy-this.coinSupGa.cy)));
     }
     
     double largeur()
     {
-        return(Math.sqrt((this.c.cx-this.a.cx)*(this.c.cx-this.a.cx) + (this.c.cy-this.a.cy)*(this.c.cy-this.a.cy)));
+        return(Math.sqrt((this.coinInfGa.cx-this.coinSupGa.cx)*(this.coinInfGa.cx-this.coinSupGa.cx) + (this.coinInfGa.cy-this.coinSupGa.cy)*(this.coinInfGa.cy-this.coinSupGa.cy)));
     }
     
     double surface()
@@ -49,7 +41,7 @@ public class Sol {
     
     @Override
     public String toString() {
-        return "Sol{" + "idSol=" + idSol + ", Coin a=" + a + ", coin b=" + b + ", Coin c=" + c + ", coin d=" + d + ')';
+        return "Sol{" + "idSol=" + idSol + ", Coin supérieur gauche=" + coinSupGa + ", coin supérieur droit=" + coinSupDr + ", Coin inférieur gauche=" + coinInfGa + ", coin inférieur droit=" + coinInfDr + ')';
     }
     
 }

@@ -1,35 +1,48 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package fr.insa.wahl.projet_56;
-/**
- *
- * @author Elève
- */
+
 public class Plafond {
     
     int idPlafond;
-    Coin c1, c2, c3, c4;
+    Coin coinSupDr, coinSupGa, coinInfDr , coinInfGa;
     
-    Plafond (int id,Coin a,Coin b, Coin c,Coin d){
+   
+    Plafond(int id, Numeroteur<Coin> listeCoinPlafond)
+    {
         this.idPlafond=id;
-        this.c1=a;
-        this.c2=b;
-        this.c3=c;
-        this.c4=d;
+        this.coinSupGa=listeCoinPlafond.getObject(0);
+        this.coinSupDr=listeCoinPlafond.getObject(1);
+        this.coinInfGa=listeCoinPlafond.getObject(2);
+        this.coinInfDr=listeCoinPlafond.getObject(3);
     }
     
-    double longeur(){
-        return(Math.sqrt((this.c2.cx-this.c1.cx)*(this.c2.cx-this.c1.cx) + (this.c2.cy-this.c1.cy)*(this.c2.cy-this.c1.cy)));
+    
+    void afficher()
+    {System.out.println("==== Sol =====");
+        this.coinSupGa.afficher();
+        this.coinSupDr.afficher();    
+        this.coinInfGa.afficher();
+        this.coinInfDr.afficher(); 
     }
     
-    double largeur(){
-        return(Math.sqrt((this.c4.cx-this.c1.cx)*(this.c4.cx-this.c1.cx) + (this.c4.cy-this.c1.cy)*(this.c4.cy-this.c1.cy)));
+    
+    double longueur()
+    {
+        return(Math.sqrt((this.coinSupDr.cx-this.coinSupGa.cx)*(this.coinSupDr.cx-this.coinSupGa.cx) + (this.coinSupDr.cy-this.coinSupGa.cy)*(this.coinSupDr.cy-this.coinSupGa.cy)));
     }
     
-    double surface(){
-        return (this.longeur()*this.largeur());
+    double largeur()
+    {
+        return(Math.sqrt((this.coinInfGa.cx-this.coinSupGa.cx)*(this.coinInfGa.cx-this.coinSupGa.cx) + (this.coinInfGa.cy-this.coinSupGa.cy)*(this.coinInfGa.cy-this.coinSupGa.cy)));
+    }
+    
+    double surface()
+    {
+        return(this.longueur()*this.largeur());
+    }
+    
+    @Override
+    public String toString() {
+        return "Plafond{" + "idPlafond=" + idPlafond + ", Coin supérieur gauche=" + coinSupGa + ", coin supérieur droit=" + coinSupDr + ", Coin inférieur gauche=" + coinInfGa + ", coin inférieur droit=" + coinInfDr + ')';
     }
     
 }
