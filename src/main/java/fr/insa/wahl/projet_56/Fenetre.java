@@ -10,8 +10,8 @@ package fr.insa.wahl.projet_56;
  */
 public class Fenetre extends Ouverture {
     
-    Fenetre (int id, double largeur, double hauteur){
-        super(id,largeur,hauteur);
+    Fenetre (int id){
+        super(id,1.35,1.00);
     }
     
 }
