@@ -9,9 +9,9 @@ package fr.insa.wahl.projet_56;
  * @author Elève
  */
 public class Tremie extends Ouverture{
-    
-    Tremie (int id, double largeur, double hauteur)
+  
+    Tremie (int id)
     {
-        super(id,largeur,hauteur);
+        super(id,0.80,2.70);
     }
 }
