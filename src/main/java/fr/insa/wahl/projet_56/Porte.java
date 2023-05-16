@@ -10,8 +10,8 @@ package fr.insa.wahl.projet_56;
  */
 public class Porte extends Ouverture{
     
-    Porte(int id, double largeur, double hauteur)
+    Porte(int id)
     {
-       super(id,largeur,hauteur); 
+       super(id,0.83,2.03); 
     }
 }
