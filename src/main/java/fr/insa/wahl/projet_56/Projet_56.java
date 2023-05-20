@@ -57,7 +57,7 @@ public class Projet_56 {
          //System.out.println(m1.toString()+"\nSurface :"+m1.surface());
          System.out.format(m1.toString()+"\nSurface :%.2f",m1.surface());
          
-         //calcul du coût de revêtement d'un mur
+         /*calcul du coût de revêtement d'un mur
          System.out.println("Entrez revêtement");
          Revetement r ;
          System.out.println("Identifiant du revêtement");
@@ -66,14 +66,14 @@ public class Projet_56 {
          double p=Lire.d();
          r =  new Revetement(id, p);
          double montantRevetement = calculMontantRevetement(m1,r);
-         System.out.format("\nSurface :%.2f", montantRevetement);
+         System.out.format("\nSurface :%.2f", montantRevetement);*/
       
          
          
     }//fin de la méthode main
     
-    static double calculMontantRevetement(Mur m, Revetement x)
+    /*static double calculMontantRevetement(Mur m, Revetement x)
          {
              return (m.surface()*x.prix);
-         }
+         }*/
  }
