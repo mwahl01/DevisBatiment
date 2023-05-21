@@ -1,8 +1,8 @@
 package fr.insa.wahl.projet_56;
 
 public class Mur {
-    int idMur, nbrePortes, nbreFenetres;
-    Coin debut, fin;
+    private int idMur;
+    private Coin debut, fin;
     
     
     
@@ -13,6 +13,18 @@ public class Mur {
         this.fin=fc;
     }
     
+    public int getId(){
+        return idMur;
+    }
+    
+    public Coin getDebut(){
+        return debut;
+    }
+    
+    public Coin getFin(){
+        return fin;
+    }
+    
     void afficher()
     {System.out.println("==== Mur =====");
         this.debut.afficher();
@@ -21,7 +33,11 @@ public class Mur {
     
     double longueur()
     {
-        return(Math.sqrt((this.fin.cx-this.debut.cx)*(this.fin.cx-this.debut.cx) + (this.fin.cy-this.debut.cy)*(this.fin.cy-this.debut.cy)));
+        double xdebut= debut.getX();
+        double xfin= fin.getX();
+        double ydebut= debut.getY();
+        double yfin= fin.getY();
+        return(Math.sqrt((xfin-xdebut)*(xfin-xdebut) + (yfin-ydebut)*(yfin-ydebut)));
     }
     
     double surface()

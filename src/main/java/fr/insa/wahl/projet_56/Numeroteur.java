@@ -83,4 +83,7 @@ public class Numeroteur <Obj> {
             return false;
         }
     }
+    int size(){
+       return objets.size();
+    }
 }

@@ -1,38 +1,55 @@
 package fr.insa.wahl.projet_56;
 
 public class Sol {
-    int idSol;
-    Coin coinSupDr, coinSupGa, coinInfDr , coinInfGa;
+    private int idSol;
+    private Numeroteur<Coin> listeCoinSol;
     
    
     Sol(int id, Numeroteur<Coin> listeCoinSol)
     {
         this.idSol=id;
-        this.coinSupGa=listeCoinSol.getObject(0);
-        this.coinSupDr=listeCoinSol.getObject(1);
-        this.coinInfGa=listeCoinSol.getObject(2);
-        this.coinInfDr=listeCoinSol.getObject(3);
+        this.listeCoinSol=listeCoinSol;
     }
     
+    public int getId(){
+        return idSol;
+    }
     
+    public Numeroteur<Coin> getListe(){
+        return listeCoinSol;
+    }
     void afficher()
     {System.out.println("==== Sol =====");
-        this.coinSupGa.afficher();
-        this.coinSupDr.afficher();    
-        this.coinInfGa.afficher();
-        this.coinInfDr.afficher(); 
+        this.listeCoinSol.toString();
     }
     
     
     double longueur()
     {
-        return(Math.sqrt((this.coinSupDr.cx-this.coinSupGa.cx)*(this.coinSupDr.cx-this.coinSupGa.cx) + (this.coinSupDr.cy-this.coinSupGa.cy)*(this.coinSupDr.cy-this.coinSupGa.cy)));
+        if (listeCoinSol.size()<2){
+            return 0.0;
+        }
+        Coin coinInfGauche=listeCoinSol.getObject(0);
+        Coin coinInfDroit=listeCoinSol.getObject(1);
+        double xcoinInfGauche=coinInfGauche.getX();
+        double ycoinInfGauche=coinInfGauche.getY();
+        double xcoinInfDroit=coinInfDroit.getX();
+        double ycoinInfDroit=coinInfDroit.getY();
+        return(Math.sqrt((xcoinInfDroit-xcoinInfGauche)*(xcoinInfDroit-xcoinInfGauche) + (ycoinInfDroit-ycoinInfGauche)*(ycoinInfDroit-ycoinInfGauche)));
     }
     
     double largeur()
     {
-        return(Math.sqrt((this.coinInfGa.cx-this.coinSupGa.cx)*(this.coinInfGa.cx-this.coinSupGa.cx) + (this.coinInfGa.cy-this.coinSupGa.cy)*(this.coinInfGa.cy-this.coinSupGa.cy)));
-    }
+        if (listeCoinSol.size()<2){
+            return 0.0;
+        }
+        Coin coinInfGauche=listeCoinSol.getObject(0);
+        Coin coinSupGauche=listeCoinSol.getObject(1);
+        double xcoinInfGauche=coinInfGauche.getX();
+        double ycoinInfGauche=coinInfGauche.getY();
+        double xcoinSupGauche=coinSupGauche.getX();
+        double ycoinSupGauche=coinSupGauche.getY();
+        return(Math.sqrt((xcoinSupGauche-xcoinInfGauche)*(xcoinSupGauche-xcoinInfGauche) + (ycoinSupGauche-ycoinInfGauche)*(ycoinSupGauche-ycoinInfGauche)));    }
     
     double surface()
     {
@@ -41,7 +58,7 @@ public class Sol {
     
     @Override
     public String toString() {
-        return "Sol{" + "idSol=" + idSol + ", Coin supérieur gauche=" + coinSupGa + ", coin supérieur droit=" + coinSupDr + ", Coin inférieur gauche=" + coinInfGa + ", coin inférieur droit=" + coinInfDr + ')';
+        return "Sol{" + "idSol=" + idSol + ", Coins du sol =" + listeCoinSol.toString() +')';
     }
     
 }

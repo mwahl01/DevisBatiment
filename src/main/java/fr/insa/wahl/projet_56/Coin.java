@@ -13,15 +13,27 @@ public class Coin {
         return sb.toString();
     }
     // Attributs
-    int idCoin;
-    double cx;
-    double cy;
+    private int idCoin;
+    private double cx;
+    private double cy;
     // Constructeur
     Coin(int id, double x, double y)
     {
       this.idCoin=id;
       this.cx=x;
       this.cy=y;
+    }
+    
+    public int getId(){
+        return idCoin;
+    }
+    
+    public double getX()
+            {
+                return cx;
+            }
+    public double getY(){
+        return cy;
     }
     
     void afficher()

@@ -2,38 +2,55 @@ package fr.insa.wahl.projet_56;
 
 public class Plafond {
     
-    int idPlafond;
-    Coin coinSupDr, coinSupGa, coinInfDr , coinInfGa;
+    private int idPlafond;
+    private Numeroteur<Coin> listeCoinPlafond;
     
    
     Plafond(int id, Numeroteur<Coin> listeCoinPlafond)
     {
         this.idPlafond=id;
-        this.coinSupGa=listeCoinPlafond.getObject(0);
-        this.coinSupDr=listeCoinPlafond.getObject(1);
-        this.coinInfGa=listeCoinPlafond.getObject(2);
-        this.coinInfDr=listeCoinPlafond.getObject(3);
+        this.listeCoinPlafond=listeCoinPlafond;
     }
     
+    public int getId(){
+        return idPlafond;
+    }
     
+    public Numeroteur<Coin> getListe(){
+        return listeCoinPlafond;
+    }
     void afficher()
     {System.out.println("==== Sol =====");
-        this.coinSupGa.afficher();
-        this.coinSupDr.afficher();    
-        this.coinInfGa.afficher();
-        this.coinInfDr.afficher(); 
+        this.listeCoinPlafond.toString();
     }
     
     
     double longueur()
     {
-        return(Math.sqrt((this.coinSupDr.cx-this.coinSupGa.cx)*(this.coinSupDr.cx-this.coinSupGa.cx) + (this.coinSupDr.cy-this.coinSupGa.cy)*(this.coinSupDr.cy-this.coinSupGa.cy)));
+        if (listeCoinPlafond.size()<2){
+            return 0.0;
+        }
+        Coin coinInfGauche=listeCoinPlafond.getObject(0);
+        Coin coinInfDroit=listeCoinPlafond.getObject(1);
+        double xcoinInfGauche=coinInfGauche.getX();
+        double ycoinInfGauche=coinInfGauche.getY();
+        double xcoinInfDroit=coinInfDroit.getX();
+        double ycoinInfDroit=coinInfDroit.getY();
+        return(Math.sqrt((xcoinInfDroit-xcoinInfGauche)*(xcoinInfDroit-xcoinInfGauche) + (ycoinInfDroit-ycoinInfGauche)*(ycoinInfDroit-ycoinInfGauche)));
     }
     
     double largeur()
     {
-        return(Math.sqrt((this.coinInfGa.cx-this.coinSupGa.cx)*(this.coinInfGa.cx-this.coinSupGa.cx) + (this.coinInfGa.cy-this.coinSupGa.cy)*(this.coinInfGa.cy-this.coinSupGa.cy)));
-    }
+        if (listeCoinPlafond.size()<2){
+            return 0.0;
+        }
+        Coin coinInfGauche=listeCoinPlafond.getObject(0);
+        Coin coinSupGauche=listeCoinPlafond.getObject(1);
+        double xcoinInfGauche=coinInfGauche.getX();
+        double ycoinInfGauche=coinInfGauche.getY();
+        double xcoinSupGauche=coinSupGauche.getX();
+        double ycoinSupGauche=coinSupGauche.getY();
+        return(Math.sqrt((xcoinSupGauche-xcoinInfGauche)*(xcoinSupGauche-xcoinInfGauche) + (ycoinSupGauche-ycoinInfGauche)*(ycoinSupGauche-ycoinInfGauche)));    }
     
     double surface()
     {
@@ -42,7 +59,7 @@ public class Plafond {
     
     @Override
     public String toString() {
-        return "Plafond{" + "idPlafond=" + idPlafond + ", Coin supérieur gauche=" + coinSupGa + ", coin supérieur droit=" + coinSupDr + ", Coin inférieur gauche=" + coinInfGa + ", coin inférieur droit=" + coinInfDr + ')';
+        return "Sol{" + "idSol=" + idPlafond + ", Coins du sol =" + listeCoinPlafond.toString() +')';
     }
     
 }
