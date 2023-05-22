@@ -26,7 +26,7 @@ public class Ouverture {
      
     double surface()
     {
-        return(this.dimX*this.dimY);
+        return this.dimX*this.dimY;
     }
     
     void afficher()

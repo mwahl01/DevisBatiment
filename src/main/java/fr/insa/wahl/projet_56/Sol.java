@@ -1,23 +1,35 @@
 package fr.insa.wahl.projet_56;
 
 public class Sol {
-    private int idSol;
+    private int idSol, nbreTremie;
     private Numeroteur<Coin> listeCoinSol;
+    private Numeroteur<Revetement> listeRevetement;
     
    
-    Sol(int id, Numeroteur<Coin> listeCoinSol)
+    Sol(int id, int tremie, Numeroteur<Coin> listeCoinSol, Numeroteur<Revetement> listeRevetement)
     {
         this.idSol=id;
+        this.nbreTremie=tremie;
         this.listeCoinSol=listeCoinSol;
+        this.listeRevetement=listeRevetement;
     }
     
     public int getId(){
         return idSol;
     }
     
-    public Numeroteur<Coin> getListe(){
+    public int getTremie(){
+        return nbreTremie;
+    }
+    
+    public Numeroteur<Coin> getListeC(){
         return listeCoinSol;
     }
+    
+    public Numeroteur<Revetement> getListeR(){
+        return listeRevetement;
+    }
+    
     void afficher()
     {System.out.println("==== Sol =====");
         this.listeCoinSol.toString();
@@ -54,6 +66,34 @@ public class Sol {
     double surface()
     {
         return(this.longueur()*this.largeur());
+    }
+    
+    double montantRevetement(){
+        Tremie tremie=new Tremie(0);
+        double surfaceRecouvrable=this.surface()-(nbreTremie*tremie.surface());
+        System.out.println("Voulez-vous utiliser plusieurs revêtements ? oui(1)/non(0)");
+        int reponse=Lire.i();
+        if (reponse==0){
+            System.out.println("Quel revêtement souhaitez-vous utiliser ? Indiquer l'index ");
+            listeRevetement.toString();
+            int indexRevetement=Lire.i();
+            double prix=listeRevetement.getObject(indexRevetement).getPrix();
+            return surfaceRecouvrable*prix;
+        }
+        else{
+            System.out.println("En combien de parties souhaitez-vous diviser le mur ?");
+            int n=Lire.i();
+            double surfaceDivise=surfaceRecouvrable/n;
+            double sommeTotale=0;
+            for (int i=0;i<n;i++){
+                System.out.println("Quel revêtement souhaitez-vous utiliser ? Indiquer l'index ");
+                listeRevetement.toString();
+                int indexRevetement=Lire.i();
+                double prix=listeRevetement.getObject(indexRevetement).getPrix();
+                sommeTotale=sommeTotale+(surfaceDivise*prix);
+            }
+            return sommeTotale;
+        }
     }
     
     @Override

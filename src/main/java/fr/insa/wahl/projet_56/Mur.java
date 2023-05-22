@@ -1,16 +1,19 @@
 package fr.insa.wahl.projet_56;
 
 public class Mur {
-    private int idMur;
+    private int idMur, nbrePorte, nbreFenetre;
     private Coin debut, fin;
+    private Numeroteur<Revetement> listeRevetement;
     
     
-    
-    Mur(int id, Coin dc, Coin fc)
+    Mur(int id, Coin dc, Coin fc, int nbrePorte, int nbreFenetre, Numeroteur<Revetement> listeRevetement)
     {
         this.idMur=id;
         this.debut=dc;
         this.fin=fc;
+        this.nbrePorte=nbrePorte;
+        this.nbreFenetre=nbreFenetre;
+        this.listeRevetement=listeRevetement;
     }
     
     public int getId(){
@@ -23,6 +26,18 @@ public class Mur {
     
     public Coin getFin(){
         return fin;
+    }
+    
+    public int getPorte(){
+        return nbrePorte;
+    }
+    
+    public int getFenetre(){
+        return nbreFenetre;
+    }
+    
+    public Numeroteur<Revetement> getListe(){
+        return listeRevetement;
     }
     
     void afficher()
@@ -47,14 +62,34 @@ public class Mur {
         return(this.longueur()*hsp);
     }
     
-    /*double montantRevetement(){
-        System.out.println("Entrer le nombre de porte présente sur le mur");
-        nbrePortes=Lire.i();
-        System.out.println("Entrer le nombre de fenêtre présente sur le mur");
-        nbreFenetres=Lire.i();
-        return((this.surface()-(porte.surface())*nbrePortes-(fenetre.surface())*nbreFenetre)*x.prix);
+    double montantRevetement(){
+        Porte porte=new Porte(0);
+        Fenetre fenetre=new Fenetre(0);
+        double surfaceRecouvrable=this.surface()-(porte.surface()*nbrePorte)-(fenetre.surface()*nbreFenetre);
+        System.out.println("Voulez-vous utiliser plusieurs revêtements ? oui(1)/non(0)");
+        int reponse=Lire.i();
+        if (reponse==0){
+            System.out.println("Quel revêtement souhaitez-vous utiliser ? Indiquer l'index ");
+            listeRevetement.toString();
+            int indexRevetement=Lire.i();
+            double prix=listeRevetement.getObject(indexRevetement).getPrix();
+            return surfaceRecouvrable*prix;
+        }
+        else{
+            System.out.println("En combien de parties souhaitez-vous diviser le mur ?");
+            int n=Lire.i();
+            double surfaceDivise=surfaceRecouvrable/n;
+            double sommeTotale=0;
+            for (int i=0;i<n;i++){
+                System.out.println("Quel revêtement souhaitez-vous utiliser ? Indiquer l'index ");
+                listeRevetement.toString();
+                int indexRevetement=Lire.i();
+                double prix=listeRevetement.getObject(indexRevetement).getPrix();
+                sommeTotale=sommeTotale+(surfaceDivise*prix);
+            }
+            return sommeTotale;
+        }
     }
-    */
     @Override
     public String toString() {
         return "Mur{" + "idMur=" + idMur + ", debut=" + debut + ", fin=" + fin + '}';

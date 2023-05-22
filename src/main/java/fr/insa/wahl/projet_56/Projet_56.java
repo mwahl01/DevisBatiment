@@ -12,7 +12,7 @@ package fr.insa.wahl.projet_56;
 public class Projet_56 {
 
     public static void main(String[] args) {
-        Coin c1;
+        /*Coin c1;
         System.out.println(" Identifiant du Coin");
         int id=Lire.i();
         System.out.println(" Abscisse du Coin");
@@ -55,7 +55,7 @@ public class Projet_56 {
          // Calcul et affichage de la surface d'un mur
          //double surface=m1.surface();
          //System.out.println(m1.toString()+"\nSurface :"+m1.surface());
-         System.out.format(m1.toString()+"\nSurface :%.2f",m1.surface());
+         //System.out.format(m1.toString()+"\nSurface :%.2f",m1.surface());
          
          /*calcul du coût de revêtement d'un mur
          System.out.println("Entrez revêtement");
