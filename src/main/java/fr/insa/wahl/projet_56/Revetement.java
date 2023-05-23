@@ -39,4 +39,9 @@ public class Revetement {
     public boolean isPourPlafond(){
         return pourPlafond;
     }
+    
+    @Override
+    public String toString(){
+        return "Revetement="+idRevetement+" désignation="+designation+" prix unitaire="+prixUnitaire;
+    }
 }

@@ -71,7 +71,7 @@ public class Numeroteur <Obj> {
 
     @Override
     public String toString() {
-        return "Numeroteur{" + "objets=" + objets + ", indexes=" + indexes + '}';
+        return "indexes=" + indexes;
     }
 
     public boolean add(Obj obj) {

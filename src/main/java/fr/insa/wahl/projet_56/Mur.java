@@ -5,6 +5,14 @@ public class Mur {
     private Coin debut, fin;
     private Numeroteur<Revetement> listeRevetement;
     
+    Mur(int id, Coin dc, Coin fc, int nbrePorte, int nbreFenetre)
+    {
+        this.idMur=id;
+        this.debut=dc;
+        this.fin=fc;
+        this.nbrePorte=nbrePorte;
+        this.nbreFenetre=nbreFenetre;
+    }
     
     Mur(int id, Coin dc, Coin fc, int nbrePorte, int nbreFenetre, Numeroteur<Revetement> listeRevetement)
     {
