@@ -38,4 +38,9 @@ public class Niveau {
         }
         return sommeTotale;
     }
+    
+    @Override
+    public String toString(){
+        return "Niveau{"+"identifiant du niveau ="+idNiveau+"hauteur sous plafond="+hauteurSousPlafond+"Appartements du niveau="+listeAppartement.toString()+"}";
+    }
 }

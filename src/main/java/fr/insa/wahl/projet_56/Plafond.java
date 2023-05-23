@@ -98,7 +98,7 @@ public class Plafond {
     
     @Override
     public String toString() {
-        return "Sol{" + "idSol=" + idPlafond + ", Coins du sol =" + listeCoinPlafond.toString() +')';
+        return "Plafond{" + "idPlafond=" + idPlafond + ", Coins du plafond =" + listeCoinPlafond.toString() +')';
     }
     
 }

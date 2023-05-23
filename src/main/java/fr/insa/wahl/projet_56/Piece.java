@@ -50,4 +50,9 @@ public class Piece {
         }
         return montantMur+solPiece.montantRevetement()+plafondPiece.montantRevetement();
     }
+    
+    @Override
+    public String toString(){
+        return "Pièce{"+"identifiant de la pièce="+idPiece+"Sol de la pièce"+solPiece.toString()+"Plafond de la pièce"+plafondPiece.toString()+"Murs de la pièce"+listeMurPiece.toString()+"}";
+    }
 }

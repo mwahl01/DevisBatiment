@@ -37,4 +37,8 @@ public class Appartement {
         }
         return sommeTotale;
     }
+    @Override
+    public String toString(){
+        return "Appartement{"+"identifiant du mur"+idAppartement+"identifiant du niveau"+idNiveauAppartement+"Pièces de l'appartement"+listePiece.toString()+"}";
+    }
 }
