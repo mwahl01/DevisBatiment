@@ -6,6 +6,12 @@ public class Plafond {
     private Numeroteur<Coin> listeCoinPlafond;
     private Numeroteur<Revetement> listeRevetement;
     
+    Plafond(int id, int tremie, Numeroteur<Coin> listeCoinPlafond)
+    {
+        this.idPlafond=id;
+        this.nbreTremie=tremie;
+        this.listeCoinPlafond=listeCoinPlafond;
+    }
    
     Plafond(int id, int tremie, Numeroteur<Coin> listeCoinPlafond, Numeroteur<Revetement> listeRevetement)
     {
