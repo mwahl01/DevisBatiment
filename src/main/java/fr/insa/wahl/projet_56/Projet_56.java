@@ -101,14 +101,7 @@ public class Projet_56 {
             while (reponseM.equals("CREER")){
                 if (listeCoin.size()<2){
                     System.out.println("Vous devez créer un coin supplémentaire");
-                    System.out.println("Donner l'identifiant du coin");
-                    int id=Lire.i();
-                    System.out.println("Donner l'abscisse du coin");
-                    double x=Lire.d();
-                    System.out.println("Donner l'ordonnée du coin");
-                    double y=Lire.d();
-                    Coin coin=new Coin(id,x,y);
-                    listeCoin.add(coin);
+                    reponseM="STOP";
                 }
                 else{
                     System.out.println("Entrer l'identifiant du mur");
@@ -126,9 +119,9 @@ public class Projet_56 {
                     Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
                     Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
                     listeMur.add(mur);
+                    System.out.println("Voulez-vous continuer ?");
+                    reponseM=Lire.S();
                 }
-                System.out.println("Voulez-vous continuer ?");
-                reponseM=Lire.S();
             }
         }//Fin création mur
         
@@ -137,36 +130,29 @@ public class Projet_56 {
             System.out.println("Entrer CREER pour créer un sol, entrer STOP pour arrêter");
             String reponseS=Lire.S();
             while (reponseS.equals("CREER")){
-                System.out.println("Entrer l'identifiant du sol");
-                int idSol=Lire.i();
                 Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                while (petiteListe.size()!=4){
-                    if(listeCoin.size()<4){
+                if(listeCoin.size()<4){
                         System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
+                        reponseS="STOP";
                     }
-                    else{
-                    for (int i=0;i<4;i++){
-                        System.out.println("Choisissez un coin constituant le sol"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                        int index=Lire.i();
-                        petiteListe.add(listeCoin.getObject(index));
+                else{
+                    System.out.println("Entrer l'identifiant du sol");
+                    int idSol=Lire.i();
+                    while (petiteListe.size()!=4){
+                        for (int i=0;i<4;i++){
+                            System.out.println("Choisissez un coin constituant le sol"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
+                            int index=Lire.i();
+                            petiteListe.add(listeCoin.getObject(index));
+                        }
                     }
-                    }
-                }
-                System.out.println("Entrez le nombre de tremie présent sur le sol");
-                int nbreTremie=Lire.i();
-                Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
-                listeSol.add(sol);
-                System.out.println("Voulez-vous continuer ?");
-                reponseS=Lire.S();
+                    System.out.println("Entrez le nombre de tremie présent sur le sol");
+                    int nbreTremie=Lire.i();
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
+                    listeSol.add(sol);
+                    System.out.println("Voulez-vous continuer ?");
+                    reponseS=Lire.S();   
+                }  
             }
         }//Fin création sol
         
@@ -175,36 +161,29 @@ public class Projet_56 {
             System.out.println("Entrer CREER pour créer un plafond, entrer STOP pour arrêter");
             String reponseP=Lire.S();
             while (reponseP.equals("CREER")){
-                System.out.println("Entrer l'identifiant du plafond");
-                int idPlafond=Lire.i();
                 Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                while (petiteListe.size()!=4){
-                    if(listeCoin.size()<4){
+                if(listeCoin.size()<4){
                         System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
+                        reponseP="STOP";
                     }
-                    else{
-                    for (int i=0;i<4;i++){
-                        System.out.println("Choisissez un coin constituant le plafond"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                        int index=Lire.i();
-                        petiteListe.add(listeCoin.getObject(index));
+                else{
+                    System.out.println("Entrer l'identifiant du plafond");
+                    int idPlafond=Lire.i();
+                    while (petiteListe.size()!=4){  
+                        for (int i=0;i<4;i++){
+                            System.out.println("Choisissez un coin constituant le plafond"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
+                            int index=Lire.i();
+                            petiteListe.add(listeCoin.getObject(index));
+                        }
                     }
-                    }
+                    System.out.println("Entrez le nombre de tremie présent sur le plafond");
+                    int nbreTremie=Lire.i();
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
+                    listePlafond.add(plafond);
+                    System.out.println("Voulez-vous continuer ?");
+                    reponseP=Lire.S();
                 }
-                System.out.println("Entrez le nombre de tremie présent sur le plafond");
-                int nbreTremie=Lire.i();
-                Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
-                listePlafond.add(plafond);
-                System.out.println("Voulez-vous continuer ?");
-                reponseP=Lire.S();
             }
         }//Fin création Plafond
         
@@ -213,118 +192,41 @@ public class Projet_56 {
             System.out.println("Entrer CREER pour créer une pièce, entrer STOP pour arrêter");
             String reponsePc=Lire.S();
             while (reponsePc.equals("CREER")){
-                System.out.println("Entrer l'identifiant de la pièce");
-                int idPiece=Lire.i();
-                if (listeSol.size()==0){
-                    System.out.println("Vous devez créer un sol supplémentaire");
-                    System.out.println("Entrer l'identifiant du sol");
-                    int idSol=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                            System.out.println("Vous devez créer un coin supplémentaire");
-                            System.out.println("Donner l'identifiant du coin");
-                            int id=Lire.i();
-                            System.out.println("Donner l'abscisse du coin");
-                            double x=Lire.d();
-                            System.out.println("Donner l'ordonnée du coin");
-                            double y=Lire.d();
-                            Coin coin=new Coin(id,x,y);
-                            listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                            System.out.println("Choisissez un coin constituant le sol"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                            int index=Lire.i();
-                            petiteListe.add(listeCoin.getObject(index));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le sol");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
-                listeSol.add(sol);
-                }
-                System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
-                int index=Lire.i();
-                Sol solPiece=listeSol.getObject(index);
-                if (listePlafond.size()==0){
-                    System.out.println("Vous devez créer un plafond supplémentaire");
-                    System.out.println("Entrer l'identifiant du plafond");
-                    int idPlafond=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                                System.out.println("Choisissez un coin constituant le plafond"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                                int indexe=Lire.i();
-                                petiteListe.add(listeCoin.getObject(indexe));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le plafond");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
-                listePlafond.add(plafond);
-                }
-                System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
-                int indx=Lire.i();
-                Plafond plafondPiece=listePlafond.getObject(indx);
                 System.out.println("Combien de murs possède la pièce ?");
                 int nbreMur=Lire.i();
                 Numeroteur<Mur> listeMurPiece=new Numeroteur<Mur>();
-                while(listeMur.size()<nbreMur){
-                    if (listeCoin.size()<2){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
+                if ((listeSol.size()==0)||(listePlafond.size()==0)||(listeMur.size()<nbreMur)){
+                    if (listeSol.size()==0){
+                    System.out.println("Vous devez créer un sol supplémentaire");
                     }
-                    else{
-                        System.out.println("Entrer l'identifiant du mur");
-                    int id=Lire.i();
-                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    int i=Lire.i();
-                    Coin debut=listeCoin.getObject(i);
-                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    i=Lire.i();
-                    Coin fin=listeCoin.getObject(i);
-                    System.out.println("Entrer le nombre de portes sur le mur");
-                    int nbrePorte=Lire.i();
-                    System.out.println("Entrer le nombre de fenêtres sur le mur");
-                    int nbreFenetre=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
-                    listeMur.add(mur);
+                    else if (listePlafond.size()==0){
+                    System.out.println("Vous devez créer un plafond supplémentaire");
                     }
+                    else if (listeMur.size()<nbreMur){
+                    System.out.println("Vous devez créer un mur supplémentaire");
+                    } 
+                reponsePc="STOP";    
                 }
-                for(int k=0;k<nbreMur;k++){
-                    System.out.println("Choisissez un mur constituant la pièce"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
-                    int inx=Lire.i();
-                    listeMurPiece.add(listeMur.getObject(inx));
+                else{
+                    System.out.println("Entrer l'identifiant de la pièce");
+                    int idPiece=Lire.i();
+                    System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
+                    int index=Lire.i();
+                    Sol solPiece=listeSol.getObject(index);
+                    System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
+                    int indx=Lire.i();
+                    Plafond plafondPiece=listePlafond.getObject(indx);
+                    for(int k=0;k<nbreMur;k++){
+                        System.out.println("Choisissez un mur constituant la pièce"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
+                        int inx=Lire.i();
+                        listeMurPiece.add(listeMur.getObject(inx));
+                    }
+                    Piece piece=new Piece(idPiece,solPiece,plafondPiece,listeMurPiece);
+                    listePiece.add(piece);
+                    System.out.println("Voulez-vous continuer ?");
+                    reponsePc=Lire.S();
                 }
-                Piece piece=new Piece(idPiece,solPiece,plafondPiece,listeMurPiece);
-                listePiece.add(piece);
-                System.out.println("Voulez-vous continuer ?");
-                reponsePc=Lire.S();
+                
             }
         }//Fin création pièce
         
@@ -333,135 +235,28 @@ public class Projet_56 {
             System.out.println("Entrer CREER pour créer un appartement, entrer STOP pour arrêter");
             String reponseA=Lire.S();
             while (reponseA.equals("CREER")){
-                System.out.println("Entrer l'identifiant de l'appartement");
-                int idAppart=Lire.i();
-                System.out.println("Entrer le niveau auquel est situé l'appartement");
-                int idNiveauAppart=Lire.i();
                 System.out.println("Combien de pièces possède l'appartement ?");
                 int nbrePiece=Lire.i();
                 Numeroteur<Piece> listePieceAppart=new Numeroteur<Piece>();
-                while (listePiece.size()<nbrePiece){
+                if (listePiece.size()<nbrePiece){
                     System.out.println("Vous devez créer une pièce supplémentaire");
-                    System.out.println("Entrer l'identifiant de la pièce");
-                int idPiece=Lire.i();
-                if (listeSol.size()==0){
-                    System.out.println("Vous devez créer un sol supplémentaire");
-                    System.out.println("Entrer l'identifiant du sol");
-                    int idSol=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                            System.out.println("Vous devez créer un coin supplémentaire");
-                            System.out.println("Donner l'identifiant du coin");
-                            int id=Lire.i();
-                            System.out.println("Donner l'abscisse du coin");
-                            double x=Lire.d();
-                            System.out.println("Donner l'ordonnée du coin");
-                            double y=Lire.d();
-                            Coin coin=new Coin(id,x,y);
-                            listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                            System.out.println("Choisissez un coin constituant le sol"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                            int index=Lire.i();
-                            petiteListe.add(listeCoin.getObject(index));
-                            }
-                        }
+                    reponseA="STOP";
+                }
+                else{
+                    System.out.println("Entrer l'identifiant de l'appartement");
+                    int idAppart=Lire.i();
+                    System.out.println("Entrer le niveau auquel est situé l'appartement");
+                    int idNiveauAppart=Lire.i();
+                    for (int k=0;k<nbrePiece;k++){
+                        System.out.println("Choisissez une pièce constituant l'appartement"+"\n"+listePiece.toString()+"\n"+"Donnez l'indexe");
+                        int idx=Lire.i();
+                        listePieceAppart.add(listePiece.getObject(idx));
                     }
-                    System.out.println("Entrez le nombre de tremie présent sur le sol");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
-                listeSol.add(sol);
+                    Appartement appart=new Appartement(idAppart, idNiveauAppart, listePieceAppart);
+                    listeAppart.add(appart);
+                    System.out.println("Voulez-vous continuer ?");
+                    reponseA=Lire.S();
                 }
-                System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
-                int index=Lire.i();
-                Sol solPiece=listeSol.getObject(index);
-                if (listePlafond.size()==0){
-                    System.out.println("Vous devez créer un plafond supplémentaire");
-                    System.out.println("Entrer l'identifiant du plafond");
-                    int idPlafond=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                                System.out.println("Choisissez un coin constituant le plafond"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                                int indexe=Lire.i();
-                                petiteListe.add(listeCoin.getObject(indexe));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le plafond");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
-                listePlafond.add(plafond);
-                }
-                System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
-                int indx=Lire.i();
-                Plafond plafondPiece=listePlafond.getObject(indx);
-                System.out.println("Combien de murs possède la pièce ?");
-                int nbreMur=Lire.i();
-                Numeroteur<Mur> listeMurPiece=new Numeroteur<Mur>();
-                while(listeMur.size()<nbreMur){
-                    if (listeCoin.size()<2){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
-                    }
-                    else{
-                        System.out.println("Entrer l'identifiant du mur");
-                    int id=Lire.i();
-                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    int i=Lire.i();
-                    Coin debut=listeCoin.getObject(i);
-                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    i=Lire.i();
-                    Coin fin=listeCoin.getObject(i);
-                    System.out.println("Entrer le nombre de portes sur le mur");
-                    int nbrePorte=Lire.i();
-                    System.out.println("Entrer le nombre de fenêtres sur le mur");
-                    int nbreFenetre=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
-                    listeMur.add(mur);
-                    }
-                }
-                for(int k=0;k<nbreMur;k++){
-                    System.out.println("Choisissez un mur constituant la pièce"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
-                    int inx=Lire.i();
-                    listeMurPiece.add(listeMur.getObject(inx));
-                }
-                Piece piece=new Piece(idPiece,solPiece,plafondPiece,listeMurPiece);
-                listePiece.add(piece);
-                }
-            for (int k=0;k<nbrePiece;k++){
-                System.out.println("Choisissez une pièce constituant l'appartement"+"\n"+listePiece.toString()+"\n"+"Donnez l'indexe");
-                int idx=Lire.i();
-                listePieceAppart.add(listePiece.getObject(idx));
-            }
-            Appartement appart=new Appartement(idAppart, idNiveauAppart, listePieceAppart);
-            listeAppart.add(appart);
-            System.out.println("Voulez-vous continuer ?");
-            reponseA=Lire.S();
             }
         }//Fin création appartement
         
@@ -472,146 +267,26 @@ public class Projet_56 {
             while (reponseN.equals("CREER")){
                 System.out.println("Entrer l'identifiant du niveau");
                 int idNiveau=Lire.i();
-                System.out.println("Entrer l'hauteur sous plafond du niveau");
-                double hsp=Lire.d();
                 Numeroteur<Appartement> listeAppartNiveau=new Numeroteur<Appartement>();
+                int n=0;
                 for (int j=0;j<listeAppart.size();j++){
                     if (listeAppart.getObject(j).getNiveau()==idNiveau){
                         listeAppartNiveau.add(listeAppart.getObject(j));
+                        n=n+1;
                     }
                 }
-                if (listeAppartNiveau.size()==0){
+                if ((listeAppartNiveau.size()==0)||(n==0)){
                     System.out.println("Vous devez créer un appartement supplémentaire pour ce niveau");
-                    System.out.println("Entrer l'identifiant de l'appartement");
-                int idAppart=Lire.i();
-                System.out.println("Combien de pièces possède l'appartement ?");
-                int nbrePiece=Lire.i();
-                Numeroteur<Piece> listePieceAppart=new Numeroteur<Piece>();
-                while (listePiece.size()<nbrePiece){
-                    System.out.println("Vous devez créer une pièce supplémentaire");
-                    System.out.println("Entrer l'identifiant de la pièce");
-                int idPiece=Lire.i();
-                if (listeSol.size()==0){
-                    System.out.println("Vous devez créer un sol supplémentaire");
-                    System.out.println("Entrer l'identifiant du sol");
-                    int idSol=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                            System.out.println("Vous devez créer un coin supplémentaire");
-                            System.out.println("Donner l'identifiant du coin");
-                            int id=Lire.i();
-                            System.out.println("Donner l'abscisse du coin");
-                            double x=Lire.d();
-                            System.out.println("Donner l'ordonnée du coin");
-                            double y=Lire.d();
-                            Coin coin=new Coin(id,x,y);
-                            listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                            System.out.println("Choisissez un coin constituant le sol"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                            int index=Lire.i();
-                            petiteListe.add(listeCoin.getObject(index));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le sol");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
-                listeSol.add(sol);
+                    reponseN="STOP";
                 }
-                System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
-                int index=Lire.i();
-                Sol solPiece=listeSol.getObject(index);
-                if (listePlafond.size()==0){
-                    System.out.println("Vous devez créer un plafond supplémentaire");
-                    System.out.println("Entrer l'identifiant du plafond");
-                    int idPlafond=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                                System.out.println("Choisissez un coin constituant le plafond"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                                int indexe=Lire.i();
-                                petiteListe.add(listeCoin.getObject(indexe));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le plafond");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
-                listePlafond.add(plafond);
+                else{
+                    System.out.println("Entrer l'hauteur sous plafond du niveau");
+                    double hsp=Lire.d();
+                    Niveau niveau=new Niveau(idNiveau,hsp,listeAppartNiveau);
+                    listeNiveau.add(niveau);
+                    System.out.println("Voulez-vous continuer ?");
+                    reponseN=Lire.S();
                 }
-                System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
-                int indx=Lire.i();
-                Plafond plafondPiece=listePlafond.getObject(indx);
-                System.out.println("Combien de murs possède la pièce ?");
-                int nbreMur=Lire.i();
-                Numeroteur<Mur> listeMurPiece=new Numeroteur<Mur>();
-                while(listeMur.size()<nbreMur){
-                    if (listeCoin.size()<2){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
-                    }
-                    else{
-                        System.out.println("Entrer l'identifiant du mur");
-                    int id=Lire.i();
-                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    int i=Lire.i();
-                    Coin debut=listeCoin.getObject(i);
-                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    i=Lire.i();
-                    Coin fin=listeCoin.getObject(i);
-                    System.out.println("Entrer le nombre de portes sur le mur");
-                    int nbrePorte=Lire.i();
-                    System.out.println("Entrer le nombre de fenêtres sur le mur");
-                    int nbreFenetre=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
-                    listeMur.add(mur);
-                    }
-                }
-                for(int k=0;k<nbreMur;k++){
-                    System.out.println("Choisissez un mur constituant la pièce"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
-                    int inx=Lire.i();
-                    listeMurPiece.add(listeMur.getObject(inx));
-                }
-                Piece piece=new Piece(idPiece,solPiece,plafondPiece,listeMurPiece);
-                listePiece.add(piece);
-                }
-            for (int k=0;k<nbrePiece;k++){
-                System.out.println("Choisissez une pièce constituant l'appartement"+"\n"+listePiece.toString()+"\n"+"Donnez l'indexe");
-                int idx=Lire.i();
-                listePieceAppart.add(listePiece.getObject(idx));
-            }
-            Appartement appart=new Appartement(idAppart, idNiveau, listePieceAppart);
-            listeAppartNiveau.add(appart);
-                }
-            Niveau niveau=new Niveau(idNiveau,hsp,listeAppartNiveau);
-            listeNiveau.add(niveau);
-            System.out.println("Voulez-vous continuer ?");
-            reponseN=Lire.S();
             }
         }//Fin création niveau
         
@@ -624,324 +299,51 @@ public class Projet_56 {
                 String reponse=Lire.S();
                 //Création maison
                 if(reponse.equals("maison")){
-                    System.out.println("Entrez l'identifiant de la maison");
-                    String idMaison=Lire.S();
-                    Numeroteur<Niveau> listeNiveauMaison=new Numeroteur<Niveau>();
                     if (listeNiveau.size()==0){
                         System.out.println("Vous devez créer un niveau supplémentaire");
-                        System.out.println("Entrer l'identifiant du niveau");
-                int idNiveau=Lire.i();
-                System.out.println("Entrer l'hauteur sous plafond du niveau");
-                double hsp=Lire.d();
-                Numeroteur<Appartement> listeAppartNiveau=new Numeroteur<Appartement>();
-                for (int j=0;j<listeAppart.size();j++){
-                    if (listeAppart.getObject(j).getNiveau()==idNiveau){
-                        listeAppartNiveau.add(listeAppart.getObject(j));
-                    }
-                }
-                if (listeAppartNiveau.size()==0){
-                    System.out.println("Vous devez créer un appartement supplémentaire pour ce niveau");
-                    System.out.println("Entrer l'identifiant de l'appartement");
-                int idAppart=Lire.i();
-                System.out.println("Combien de pièces possède l'appartement ?");
-                int nbrePiece=Lire.i();
-                Numeroteur<Piece> listePieceAppart=new Numeroteur<Piece>();
-                while (listePiece.size()<nbrePiece){
-                    System.out.println("Vous devez créer une pièce supplémentaire");
-                    System.out.println("Entrer l'identifiant de la pièce");
-                int idPiece=Lire.i();
-                if (listeSol.size()==0){
-                    System.out.println("Vous devez créer un sol supplémentaire");
-                    System.out.println("Entrer l'identifiant du sol");
-                    int idSol=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                            System.out.println("Vous devez créer un coin supplémentaire");
-                            System.out.println("Donner l'identifiant du coin");
-                            int id=Lire.i();
-                            System.out.println("Donner l'abscisse du coin");
-                            double x=Lire.d();
-                            System.out.println("Donner l'ordonnée du coin");
-                            double y=Lire.d();
-                            Coin coin=new Coin(id,x,y);
-                            listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                            System.out.println("Choisissez un coin constituant le sol"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                            int index=Lire.i();
-                            petiteListe.add(listeCoin.getObject(index));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le sol");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
-                listeSol.add(sol);
-                }
-                System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
-                int index=Lire.i();
-                Sol solPiece=listeSol.getObject(index);
-                if (listePlafond.size()==0){
-                    System.out.println("Vous devez créer un plafond supplémentaire");
-                    System.out.println("Entrer l'identifiant du plafond");
-                    int idPlafond=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                                System.out.println("Choisissez un coin constituant le plafond"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                                int indexe=Lire.i();
-                                petiteListe.add(listeCoin.getObject(indexe));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le plafond");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
-                listePlafond.add(plafond);
-                }
-                System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
-                int indx=Lire.i();
-                Plafond plafondPiece=listePlafond.getObject(indx);
-                System.out.println("Combien de murs possède la pièce ?");
-                int nbreMur=Lire.i();
-                Numeroteur<Mur> listeMurPiece=new Numeroteur<Mur>();
-                while(listeMur.size()<nbreMur){
-                    if (listeCoin.size()<2){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
+                        reponseB="STOP";
                     }
                     else{
-                        System.out.println("Entrer l'identifiant du mur");
-                    int id=Lire.i();
-                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    int i=Lire.i();
-                    Coin debut=listeCoin.getObject(i);
-                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    i=Lire.i();
-                    Coin fin=listeCoin.getObject(i);
-                    System.out.println("Entrer le nombre de portes sur le mur");
-                    int nbrePorte=Lire.i();
-                    System.out.println("Entrer le nombre de fenêtres sur le mur");
-                    int nbreFenetre=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
-                    listeMur.add(mur);
+                        System.out.println("Entrez l'identifiant/le nom de la maison");
+                        String idMaison=Lire.S();
+                        Numeroteur<Niveau> listeNiveauMaison=new Numeroteur<Niveau>();
+                        System.out.println("Choisissez quel niveau constituera la maison"+"\n"+listeNiveau.toString()+"\n"+"Donnez l'indexe");
+                        int idN=Lire.i();
+                        listeNiveauMaison.add(listeNiveau.getObject(idN));
+                        Maison maison=new Maison (idMaison,listeNiveauMaison);
+                        listeBatiment.add(maison);
+                        System.out.println("Voulez-vous continuer ?");
+                        reponseB=Lire.S();
                     }
-                }
-                for(int k=0;k<nbreMur;k++){
-                    System.out.println("Choisissez un mur constituant la pièce"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
-                    int inx=Lire.i();
-                    listeMurPiece.add(listeMur.getObject(inx));
-                }
-                Piece piece=new Piece(idPiece,solPiece,plafondPiece,listeMurPiece);
-                listePiece.add(piece);
-                }
-            for (int k=0;k<nbrePiece;k++){
-                System.out.println("Choisissez une pièce constituant l'appartement"+"\n"+listePiece.toString()+"\n"+"Donnez l'indexe");
-                int idx=Lire.i();
-                listePieceAppart.add(listePiece.getObject(idx));
-            }
-            Appartement appart=new Appartement(idAppart, idNiveau, listePieceAppart);
-            listeAppartNiveau.add(appart);
-                }
-            Niveau niveau=new Niveau(idNiveau,hsp,listeAppartNiveau);
-            listeNiveau.add(niveau);
-                    }
-                System.out.println("Choisissez quel niveau constituera la maison"+"\n"+listeNiveau.toString()+"\n"+"Donnez l'indexe");
-                int idN=Lire.i();
-                listeNiveauMaison.add(listeNiveau.getObject(idN));
-                Maison maison=new Maison (idMaison,listeNiveauMaison);
-                listeBatiment.add(maison);
                 }//Fin création maison
             
 //Création d'un immeuble
                 else if(reponse.equals("immeuble")){
-                    System.out.println("Entrez l'identifiant de l'immeuble");
-                    String idImmeuble=Lire.S();
                     System.out.println("Entrez le nombre de niveau de l'immeuble");
                     int nbreNiveau=Lire.i();
                     Numeroteur<Niveau> listeNiveauImmeuble=new Numeroteur<Niveau>();
-                    while (listeNiveauImmeuble.size()!=nbreNiveau){
-                        if(listeNiveau.size()<nbreNiveau){
+                    if(listeNiveau.size()<nbreNiveau){
                         System.out.println("Vous devez créer un niveau supplémentaire");
-                        System.out.println("Entrer l'identifiant du niveau");
-                int idNiveau=Lire.i();
-                System.out.println("Entrer l'hauteur sous plafond du niveau");
-                double hsp=Lire.d();
-                Numeroteur<Appartement> listeAppartNiveau=new Numeroteur<Appartement>();
-                for (int j=0;j<listeAppart.size();j++){
-                    if (listeAppart.getObject(j).getNiveau()==idNiveau){
-                        listeAppartNiveau.add(listeAppart.getObject(j));
-                    }
-                }
-                if (listeAppartNiveau.size()==0){
-                    System.out.println("Vous devez créer un appartement supplémentaire pour ce niveau");
-                    System.out.println("Entrer l'identifiant de l'appartement");
-                int idAppart=Lire.i();
-                System.out.println("Combien de pièces possède l'appartement ?");
-                int nbrePiece=Lire.i();
-                Numeroteur<Piece> listePieceAppart=new Numeroteur<Piece>();
-                while (listePiece.size()<nbrePiece){
-                    System.out.println("Vous devez créer une pièce supplémentaire");
-                    System.out.println("Entrer l'identifiant de la pièce");
-                int idPiece=Lire.i();
-                if (listeSol.size()==0){
-                    System.out.println("Vous devez créer un sol supplémentaire");
-                    System.out.println("Entrer l'identifiant du sol");
-                    int idSol=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                            System.out.println("Vous devez créer un coin supplémentaire");
-                            System.out.println("Donner l'identifiant du coin");
-                            int id=Lire.i();
-                            System.out.println("Donner l'abscisse du coin");
-                            double x=Lire.d();
-                            System.out.println("Donner l'ordonnée du coin");
-                            double y=Lire.d();
-                            Coin coin=new Coin(id,x,y);
-                            listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                            System.out.println("Choisissez un coin constituant le sol"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                            int index=Lire.i();
-                            petiteListe.add(listeCoin.getObject(index));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le sol");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
-                listeSol.add(sol);
-                }
-                System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
-                int index=Lire.i();
-                Sol solPiece=listeSol.getObject(index);
-                if (listePlafond.size()==0){
-                    System.out.println("Vous devez créer un plafond supplémentaire");
-                    System.out.println("Entrer l'identifiant du plafond");
-                    int idPlafond=Lire.i();
-                    Numeroteur<Coin> petiteListe=new Numeroteur<Coin>();
-                    while (petiteListe.size()!=4){
-                        if(listeCoin.size()<4){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
-                        }
-                        else{
-                            for (int i=0;i<4;i++){
-                                System.out.println("Choisissez un coin constituant le plafond"+"\n"+listeCoin.toString()+"\n"+"Donnez l'indexe");
-                                int indexe=Lire.i();
-                                petiteListe.add(listeCoin.getObject(indexe));
-                            }
-                        }
-                    }
-                    System.out.println("Entrez le nombre de tremie présent sur le plafond");
-                    int nbreTremie=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
-                listePlafond.add(plafond);
-                }
-                System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
-                int indx=Lire.i();
-                Plafond plafondPiece=listePlafond.getObject(indx);
-                System.out.println("Combien de murs possède la pièce ?");
-                int nbreMur=Lire.i();
-                Numeroteur<Mur> listeMurPiece=new Numeroteur<Mur>();
-                while(listeMur.size()<nbreMur){
-                    if (listeCoin.size()<2){
-                        System.out.println("Vous devez créer un coin supplémentaire");
-                        System.out.println("Donner l'identifiant du coin");
-                        int id=Lire.i();
-                        System.out.println("Donner l'abscisse du coin");
-                        double x=Lire.d();
-                        System.out.println("Donner l'ordonnée du coin");
-                        double y=Lire.d();
-                        Coin coin=new Coin(id,x,y);
-                        listeCoin.add(coin);
+                        reponseB="STOP";
                     }
                     else{
-                        System.out.println("Entrer l'identifiant du mur");
-                    int id=Lire.i();
-                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    int i=Lire.i();
-                    Coin debut=listeCoin.getObject(i);
-                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                    i=Lire.i();
-                    Coin fin=listeCoin.getObject(i);
-                    System.out.println("Entrer le nombre de portes sur le mur");
-                    int nbrePorte=Lire.i();
-                    System.out.println("Entrer le nombre de fenêtres sur le mur");
-                    int nbreFenetre=Lire.i();
-                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
-                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
-                    listeMur.add(mur);
+                        System.out.println("Entrez l'identifiant/le nom de l'immeuble");
+                        String idImmeuble=Lire.S();
+                        for (int k=0;k<nbreNiveau;k++){
+                            System.out.println("Choisissez quel niveau constituera l'immeuble"+"\n"+listeNiveau.toString()+"\n"+"Donnez l'indexe");
+                            int idN=Lire.i();
+                            listeNiveauImmeuble.add(listeNiveau.getObject(idN));
+                        }
+                        Immeuble immeuble=new Immeuble(idImmeuble,nbreNiveau,listeNiveauImmeuble);
+                        listeBatiment.add(immeuble);
+                        System.out.println("Voulez-vous continuer ?");
+                        reponseB=Lire.S();
                     }
-                }
-                for(int k=0;k<nbreMur;k++){
-                    System.out.println("Choisissez un mur constituant la pièce"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
-                    int inx=Lire.i();
-                    listeMurPiece.add(listeMur.getObject(inx));
-                }
-                Piece piece=new Piece(idPiece,solPiece,plafondPiece,listeMurPiece);
-                listePiece.add(piece);
-                }
-            for (int k=0;k<nbrePiece;k++){
-                System.out.println("Choisissez une pièce constituant l'appartement"+"\n"+listePiece.toString()+"\n"+"Donnez l'indexe");
-                int idx=Lire.i();
-                listePieceAppart.add(listePiece.getObject(idx));
-            }
-            Appartement appart=new Appartement(idAppart, idNiveau, listePieceAppart);
-            listeAppartNiveau.add(appart);
-                }
-            Niveau niveau=new Niveau(idNiveau,hsp,listeAppartNiveau);
-            listeNiveau.add(niveau);
-                    }
-                for (int k=0;k<nbreNiveau;k++){
-                System.out.println("Choisissez quel niveau constituera l'immeuble"+"\n"+listeNiveau.toString()+"\n"+"Donnez l'indexe");
-                int idN=Lire.i();
-                listeNiveauImmeuble.add(listeNiveau.getObject(idN));
-                }
-                Immeuble immeuble=new Immeuble(idImmeuble,nbreNiveau,listeNiveauImmeuble);
-                listeBatiment.add(immeuble);
-            }
-            }//Fin création immeuble
-                else {
+                }//Fin création immeuble
+                else{
                     System.out.println("Veuillez entrer un type de bâtiment valide");
+                    reponseB="STOP";
                 }
-            System.out.println("Voulez-vous continuer ?");
-            reponseB=Lire.S();
             }
         }//Fin création bâtiment
         }//Fin création d'objets

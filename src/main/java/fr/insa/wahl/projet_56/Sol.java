@@ -5,13 +5,6 @@ public class Sol {
     private Numeroteur<Coin> listeCoinSol;
     private Numeroteur<Revetement> listeRevetement;
     
-    Sol(int id, int tremie, Numeroteur<Coin> listeCoinSol)
-    {
-        this.idSol=id;
-        this.nbreTremie=tremie;
-        this.listeCoinSol=listeCoinSol;
-    }
-   
     Sol(int id, int tremie, Numeroteur<Coin> listeCoinSol, Numeroteur<Revetement> listeRevetement)
     {
         this.idSol=id;
