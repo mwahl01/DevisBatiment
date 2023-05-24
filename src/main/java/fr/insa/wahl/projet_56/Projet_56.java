@@ -123,7 +123,8 @@ public class Projet_56 {
                     int nbrePorte=Lire.i();
                     System.out.println("Entrer le nombre de fenêtres sur le mur");
                     int nbreFenetre=Lire.i();
-                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
                     listeMur.add(mur);
                 }
                 System.out.println("Voulez-vous continuer ?");
@@ -161,7 +162,8 @@ public class Projet_56 {
                 }
                 System.out.println("Entrez le nombre de tremie présent sur le sol");
                 int nbreTremie=Lire.i();
-                Sol sol=new Sol(idSol,nbreTremie,petiteListe);
+                Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
                 listeSol.add(sol);
                 System.out.println("Voulez-vous continuer ?");
                 reponseS=Lire.S();
@@ -198,7 +200,8 @@ public class Projet_56 {
                 }
                 System.out.println("Entrez le nombre de tremie présent sur le plafond");
                 int nbreTremie=Lire.i();
-                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe);
+                Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
                 listePlafond.add(plafond);
                 System.out.println("Voulez-vous continuer ?");
                 reponseP=Lire.S();
@@ -239,8 +242,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le sol");
                     int nbreTremie=Lire.i();
-                    Sol sol=new Sol(idSol,nbreTremie,petiteListe);
-                    listeSol.add(sol);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
+                listeSol.add(sol);
                 }
                 System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
                 int index=Lire.i();
@@ -272,8 +276,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le plafond");
                     int nbreTremie=Lire.i();
-                    Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe);
-                    listePlafond.add(plafond);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
+                listePlafond.add(plafond);
                 }
                 System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
                 int indx=Lire.i();
@@ -295,19 +300,20 @@ public class Projet_56 {
                     }
                     else{
                         System.out.println("Entrer l'identifiant du mur");
-                        int id=Lire.i();
-                        System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        int i=Lire.i();
-                        Coin debut=listeCoin.getObject(i);
-                        System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        i=Lire.i();
-                        Coin fin=listeCoin.getObject(i);
-                        System.out.println("Entrer le nombre de portes sur le mur");
-                        int nbrePorte=Lire.i();
-                        System.out.println("Entrer le nombre de fenêtres sur le mur");
-                        int nbreFenetre=Lire.i();
-                        Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre);
-                        listeMur.add(mur);
+                    int id=Lire.i();
+                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    int i=Lire.i();
+                    Coin debut=listeCoin.getObject(i);
+                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    i=Lire.i();
+                    Coin fin=listeCoin.getObject(i);
+                    System.out.println("Entrer le nombre de portes sur le mur");
+                    int nbrePorte=Lire.i();
+                    System.out.println("Entrer le nombre de fenêtres sur le mur");
+                    int nbreFenetre=Lire.i();
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
+                    listeMur.add(mur);
                     }
                 }
                 for(int k=0;k<nbreMur;k++){
@@ -365,8 +371,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le sol");
                     int nbreTremie=Lire.i();
-                    Sol sol=new Sol(idSol,nbreTremie,petiteListe);
-                    listeSol.add(sol);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
+                listeSol.add(sol);
                 }
                 System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
                 int index=Lire.i();
@@ -398,8 +405,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le plafond");
                     int nbreTremie=Lire.i();
-                    Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe);
-                    listePlafond.add(plafond);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
+                listePlafond.add(plafond);
                 }
                 System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
                 int indx=Lire.i();
@@ -421,19 +429,20 @@ public class Projet_56 {
                     }
                     else{
                         System.out.println("Entrer l'identifiant du mur");
-                        int id=Lire.i();
-                        System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        int i=Lire.i();
-                        Coin debut=listeCoin.getObject(i);
-                        System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        i=Lire.i();
-                        Coin fin=listeCoin.getObject(i);
-                        System.out.println("Entrer le nombre de portes sur le mur");
-                        int nbrePorte=Lire.i();
-                        System.out.println("Entrer le nombre de fenêtres sur le mur");
-                        int nbreFenetre=Lire.i();
-                        Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre);
-                        listeMur.add(mur);
+                    int id=Lire.i();
+                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    int i=Lire.i();
+                    Coin debut=listeCoin.getObject(i);
+                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    i=Lire.i();
+                    Coin fin=listeCoin.getObject(i);
+                    System.out.println("Entrer le nombre de portes sur le mur");
+                    int nbrePorte=Lire.i();
+                    System.out.println("Entrer le nombre de fenêtres sur le mur");
+                    int nbreFenetre=Lire.i();
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
+                    listeMur.add(mur);
                     }
                 }
                 for(int k=0;k<nbreMur;k++){
@@ -509,8 +518,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le sol");
                     int nbreTremie=Lire.i();
-                    Sol sol=new Sol(idSol,nbreTremie,petiteListe);
-                    listeSol.add(sol);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
+                listeSol.add(sol);
                 }
                 System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
                 int index=Lire.i();
@@ -542,8 +552,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le plafond");
                     int nbreTremie=Lire.i();
-                    Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe);
-                    listePlafond.add(plafond);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
+                listePlafond.add(plafond);
                 }
                 System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
                 int indx=Lire.i();
@@ -565,19 +576,20 @@ public class Projet_56 {
                     }
                     else{
                         System.out.println("Entrer l'identifiant du mur");
-                        int id=Lire.i();
-                        System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        int i=Lire.i();
-                        Coin debut=listeCoin.getObject(i);
-                        System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        i=Lire.i();
-                        Coin fin=listeCoin.getObject(i);
-                        System.out.println("Entrer le nombre de portes sur le mur");
-                        int nbrePorte=Lire.i();
-                        System.out.println("Entrer le nombre de fenêtres sur le mur");
-                        int nbreFenetre=Lire.i();
-                        Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre);
-                        listeMur.add(mur);
+                    int id=Lire.i();
+                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    int i=Lire.i();
+                    Coin debut=listeCoin.getObject(i);
+                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    i=Lire.i();
+                    Coin fin=listeCoin.getObject(i);
+                    System.out.println("Entrer le nombre de portes sur le mur");
+                    int nbrePorte=Lire.i();
+                    System.out.println("Entrer le nombre de fenêtres sur le mur");
+                    int nbreFenetre=Lire.i();
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
+                    listeMur.add(mur);
                     }
                 }
                 for(int k=0;k<nbreMur;k++){
@@ -665,8 +677,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le sol");
                     int nbreTremie=Lire.i();
-                    Sol sol=new Sol(idSol,nbreTremie,petiteListe);
-                    listeSol.add(sol);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
+                listeSol.add(sol);
                 }
                 System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
                 int index=Lire.i();
@@ -698,8 +711,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le plafond");
                     int nbreTremie=Lire.i();
-                    Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe);
-                    listePlafond.add(plafond);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
+                listePlafond.add(plafond);
                 }
                 System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
                 int indx=Lire.i();
@@ -721,19 +735,20 @@ public class Projet_56 {
                     }
                     else{
                         System.out.println("Entrer l'identifiant du mur");
-                        int id=Lire.i();
-                        System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        int i=Lire.i();
-                        Coin debut=listeCoin.getObject(i);
-                        System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        i=Lire.i();
-                        Coin fin=listeCoin.getObject(i);
-                        System.out.println("Entrer le nombre de portes sur le mur");
-                        int nbrePorte=Lire.i();
-                        System.out.println("Entrer le nombre de fenêtres sur le mur");
-                        int nbreFenetre=Lire.i();
-                        Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre);
-                        listeMur.add(mur);
+                    int id=Lire.i();
+                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    int i=Lire.i();
+                    Coin debut=listeCoin.getObject(i);
+                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    i=Lire.i();
+                    Coin fin=listeCoin.getObject(i);
+                    System.out.println("Entrer le nombre de portes sur le mur");
+                    int nbrePorte=Lire.i();
+                    System.out.println("Entrer le nombre de fenêtres sur le mur");
+                    int nbreFenetre=Lire.i();
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
+                    listeMur.add(mur);
                     }
                 }
                 for(int k=0;k<nbreMur;k++){
@@ -820,8 +835,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le sol");
                     int nbreTremie=Lire.i();
-                    Sol sol=new Sol(idSol,nbreTremie,petiteListe);
-                    listeSol.add(sol);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
+                listeSol.add(sol);
                 }
                 System.out.println("Choisissez le sol constitutant la pièce"+"\n"+listeSol.toString()+"\n"+"Donnez l'index");
                 int index=Lire.i();
@@ -853,8 +869,9 @@ public class Projet_56 {
                     }
                     System.out.println("Entrez le nombre de tremie présent sur le plafond");
                     int nbreTremie=Lire.i();
-                    Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe);
-                    listePlafond.add(plafond);
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
+                listePlafond.add(plafond);
                 }
                 System.out.println("Choisissez le plafond constitutant la pièce"+"\n"+listePlafond.toString()+"\n"+"Donnez l'index");
                 int indx=Lire.i();
@@ -876,19 +893,20 @@ public class Projet_56 {
                     }
                     else{
                         System.out.println("Entrer l'identifiant du mur");
-                        int id=Lire.i();
-                        System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        int i=Lire.i();
-                        Coin debut=listeCoin.getObject(i);
-                        System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
-                        i=Lire.i();
-                        Coin fin=listeCoin.getObject(i);
-                        System.out.println("Entrer le nombre de portes sur le mur");
-                        int nbrePorte=Lire.i();
-                        System.out.println("Entrer le nombre de fenêtres sur le mur");
-                        int nbreFenetre=Lire.i();
-                        Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre);
-                        listeMur.add(mur);
+                    int id=Lire.i();
+                    System.out.println("Quel est le coin de départ ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    int i=Lire.i();
+                    Coin debut=listeCoin.getObject(i);
+                    System.out.println("Quel est le coin de fin ?"+"\n"+listeCoin.toString()+"\n"+"Donner l'indexe");
+                    i=Lire.i();
+                    Coin fin=listeCoin.getObject(i);
+                    System.out.println("Entrer le nombre de portes sur le mur");
+                    int nbrePorte=Lire.i();
+                    System.out.println("Entrer le nombre de fenêtres sur le mur");
+                    int nbreFenetre=Lire.i();
+                    Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
+                    listeMur.add(mur);
                     }
                 }
                 for(int k=0;k<nbreMur;k++){
