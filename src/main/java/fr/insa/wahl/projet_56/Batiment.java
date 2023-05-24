@@ -4,15 +4,21 @@ import java.io.*;
 
 public class Batiment {
     private String idBatiment;
+    private int nbreNiveau;
     private Numeroteur<Niveau> listeNiveau;
     
-    Batiment(String nom, Numeroteur<Niveau> listeNiveau){
+    Batiment(String nom, int nbreNiveau, Numeroteur<Niveau> listeNiveau){
         this.idBatiment=nom;
         this.listeNiveau=listeNiveau;
+        this.nbreNiveau=nbreNiveau;
     }
     
     public String getId(){
         return idBatiment;
+    }
+    
+    public int getNiveau(){
+        return nbreNiveau;
     }
     
     public Numeroteur<Niveau> getListe(){
