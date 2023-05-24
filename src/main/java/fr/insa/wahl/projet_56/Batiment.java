@@ -3,9 +3,9 @@ package fr.insa.wahl.projet_56;
 import java.io.*;
 
 public class Batiment {
-    private String idBatiment;
-    private int nbreNiveau;
-    private Numeroteur<Niveau> listeNiveau;
+    protected String idBatiment;
+    protected int nbreNiveau;
+    protected Numeroteur<Niveau> listeNiveau;
     
     Batiment(String nom, int nbreNiveau, Numeroteur<Niveau> listeNiveau){
         this.idBatiment=nom;
@@ -57,5 +57,10 @@ public class Batiment {
             }
         catch (IOException err)
         {System.out.println("Erreur :\n"+err);}
+    }
+    
+    @Override
+    public String toString(){
+        return "Bâtiment{"+"identifiant du bâtiment ="+idBatiment+"nombre de niveau="+nbreNiveau+"Niveau du bâtiment="+listeNiveau.toString()+"}";
     }
 }

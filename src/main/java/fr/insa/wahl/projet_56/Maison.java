@@ -13,4 +13,9 @@ public class Maison extends Batiment{
     Maison(String id, Numeroteur<Niveau> listeNiveau){
         super(id,1,listeNiveau);
     }
+    
+    @Override
+    public String toString(){
+        return "Maison{"+"identifiant de la maison="+idBatiment+"Niveau du bâtiment="+listeNiveau.toString()+"}";
+    }
 }

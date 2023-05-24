@@ -12,5 +12,10 @@ public class Immeuble extends Batiment {
     
     Immeuble(String id, int nbreNiveau,  Numeroteur<Niveau> listeNiveau){
             super(id,nbreNiveau,listeNiveau);
-    }        
+    }
+    
+    @Override
+    public String toString(){
+        return "Immeuble{"+"identifiant de l'immeuble ="+idBatiment+"nombre de niveau="+nbreNiveau+"Niveau du bâtiment="+listeNiveau.toString()+"}";
+    }
 }
