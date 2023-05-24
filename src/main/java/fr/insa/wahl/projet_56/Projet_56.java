@@ -65,11 +65,13 @@ public class Projet_56 {
         Numeroteur<Piece> listePiece=new Numeroteur<Piece>();
         Numeroteur<Appartement> listeAppart=new Numeroteur<Appartement>();
         Numeroteur<Niveau> listeNiveau=new Numeroteur<Niveau>();
+        Numeroteur<Batiment> listeBatiment=new Numeroteur<Batiment>();
         
-        //Création d'objets
-        System.out.println("Souhaitez-vous créer quelque chose ? oui/non");
+        System.out.println("Que souhaitez-vous faire ?"+"\n"+"Créer un objet? CREER"+"\n"+"Sauvegarder un bâtiment ? SAUVEGARDER"+"\n"+"Quitter ? QUITTER");
         String S=Lire.S();
-        while (S.equals("oui")){
+        //Création d'objets
+        while (!S.equals("QUITTER")){
+        if (S.equals("CREER")){
         System.out.println("Que souhaitez-vous céer ?"+"\n"+"1-coin"+"\n"+"2-mur"+"\n"+"3-sol"+"\n"+"4-plafond"+"\n"+"5-pièce"+"\n"+"6-appartement"+"\n"+"7-niveau"+"\n"+"8-bâtiment"+"\n"+"Entrer le numéro correspondant");
         int c=Lire.i();
         
@@ -757,6 +759,7 @@ public class Projet_56 {
                 int idN=Lire.i();
                 listeNiveauMaison.add(listeNiveau.getObject(idN));
                 Maison maison=new Maison (idMaison,listeNiveauMaison);
+                listeBatiment.add(maison);
                 }//Fin création maison
             
 //Création d'un immeuble
@@ -913,6 +916,7 @@ public class Projet_56 {
                 listeNiveauImmeuble.add(listeNiveau.getObject(idN));
                 }
                 Immeuble immeuble=new Immeuble(idImmeuble,nbreNiveau,listeNiveauImmeuble);
+                listeBatiment.add(immeuble);
             }
             }//Fin création immeuble
                 else {
@@ -923,6 +927,16 @@ public class Projet_56 {
             }
         }//Fin création bâtiment
         }//Fin création d'objets
+        
+        //Sauvegarder un bâtiment
+        else if (S.equals("SAUVEGARDER")){
+            System.out.println("Quel bâtiment souhaitez-vous sauvegarder ?"+"\n"+listeBatiment.toString()+"\n"+"Donnez l'indexe");
+            int indexe=Lire.i();
+            listeBatiment.getObject(indexe).sauvegarde();
+        }
+        System.out.println("Que souhaitez-vous faire ?"+"\n"+"Créer un objet? CREER"+"\n"+"Sauvegarder un bâtiment ? SAUVEGARDER"+"\n"+"Quitter ? QUITTER");
+        S=Lire.S();
+        }
         }//fin de la méthode main
 
     }//fin de la classe
