@@ -30,11 +30,10 @@ public class Batiment {
             BufferedWriter batiment=new BufferedWriter(new FileWriter("Batiment.txt",true));
             batiment.write(idBatiment);
             batiment.newLine();
-            for (int i=0;i<listeNiveau.size();i++){
-                Niveau niveau=listeNiveau.getObject(i);
-                String niv=niveau.toString();
-                batiment.write(niv);
-                batiment.newLine();
+            //for (int i=0;i<listeNiveau.size();i++){
+                //Niveau niveau=listeNiveau.getObject(i);
+                //batiment.write(niveau.toString());
+                //batiment.newLine();
                 /*for (int k=0;k<niveau.getListe().size();k++){
                     Appartement appart=niveau.getListe().getObject(k);
                     batiment.write(appart.toString());
@@ -54,8 +53,10 @@ public class Batiment {
                         }
                     }
             }*/
-            }
-            }
+            //}
+        batiment.close();    
+        }
+        
         catch (IOException err)
         {System.out.println("Erreur :\n"+err);}
     }

@@ -4,6 +4,6 @@ public class Porte extends Ouverture{
     
     Porte(int id)
     {
-       super(id,0.83,2.03); 
+       super(id,0.90,2.10); 
     }
 }
