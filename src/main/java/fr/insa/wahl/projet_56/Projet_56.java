@@ -463,7 +463,12 @@ public class Projet_56 {
                 System.out.println("Entrer l'hauteur sous plafond du niveau");
                 double hsp=Lire.d();
                 Numeroteur<Appartement> listeAppartNiveau=new Numeroteur<Appartement>();
-                if (listeAppart.size()==0){
+                for (int j=0;j<listeAppart.size();j++){
+                    if (listeAppart.getObject(j).getNiveau()==idNiveau){
+                        listeAppartNiveau.add(listeAppart.getObject(j));
+                    }
+                }
+                if (listeAppartNiveau.size()==0){
                     System.out.println("Vous devez créer un appartement supplémentaire pour ce niveau");
                     System.out.println("Entrer l'identifiant de l'appartement");
                 int idAppart=Lire.i();
@@ -586,10 +591,12 @@ public class Projet_56 {
                 listePieceAppart.add(listePiece.getObject(idx));
             }
             Appartement appart=new Appartement(idAppart, idNiveau, listePieceAppart);
-            listeAppart.add(appart);
+            listeAppartNiveau.add(appart);
                 }
-            System.out.println("Donnez les appartements constituant le niveau"+"\n"+listeAppart.toString()+"\n"+"Donnez l'indexe");
-            
+            Niveau niveau=new Niveau(idNiveau,hsp,listeAppartNiveau);
+            listeNiveau.add(niveau);
+            System.out.println("Voulez-vous continuer ?");
+            reponseN=Lire.S();
             }
         }//Fin création niveau
         }
