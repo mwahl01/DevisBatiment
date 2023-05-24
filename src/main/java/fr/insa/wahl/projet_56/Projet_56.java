@@ -67,7 +67,7 @@ public class Projet_56 {
         Numeroteur<Niveau> listeNiveau=new Numeroteur<Niveau>();
         Numeroteur<Batiment> listeBatiment=new Numeroteur<Batiment>();
         
-        System.out.println("Que souhaitez-vous faire ?"+"\n"+"Créer un objet? CREER"+"\n"+"Sauvegarder un bâtiment ? SAUVEGARDER"+"\n"+"Quitter ? QUITTER");
+        System.out.println("Que souhaitez-vous faire ?"+"\n"+"Créer un objet? CREER"+"\n"+"Sauvegarder un bâtiment ? SAUVEGARDER"+"\n"+"Calculer un devis ? DEVIS"+"\n"+"Quitter ? QUITTER");
         String S=Lire.S();
         //Création d'objets
         while (!S.equals("QUITTER")){
@@ -349,12 +349,29 @@ public class Projet_56 {
         }//Fin création d'objets
         
         //Sauvegarder un bâtiment
-        else if (S.equals("SAUVEGARDER")){
-            System.out.println("Quel bâtiment souhaitez-vous sauvegarder ?"+"\n"+listeBatiment.toString()+"\n"+"Donnez l'indexe");
-            int indexe=Lire.i();
-            listeBatiment.getObject(indexe).sauvegarde();
+        if (S.equals("SAUVEGARDER")){
+            if (listeBatiment.size()==0){
+                System.out.println("Vous devez créer un nouveau bâtiment");
+            }
+            else{
+                System.out.println("Quel bâtiment souhaitez-vous sauvegarder ?"+"\n"+listeBatiment.toString()+"\n"+"Donnez l'indexe");
+                int indexe=Lire.i();
+                listeBatiment.getObject(indexe).sauvegarde();
+                System.out.println("Le bâtiment a été sauvegardé");
+            }
         }
-        System.out.println("Que souhaitez-vous faire ?"+"\n"+"Créer un objet? CREER"+"\n"+"Sauvegarder un bâtiment ? SAUVEGARDER"+"\n"+"Quitter ? QUITTER");
+        
+        
+        if (S.equals("DEVIS")){
+            System.out.println("De quoi voulez-vous faire le devis ?"+"\n"+"D'un mur ? MUR"+"\n"+"D'un sol ? SOL"+"\n"+"D'un plafond ? PLAFOND"+"\n"+"De la surface au sol d'une pièce ? SURFACESOL"+"\n"+"D'une pièce entière (mur+sol+plafond)? PIECE"+"\n"+"De la surface au sol d'un appartement ? SURFACEAPPART"+"\n"+"D'un appartement en entier ? APPART"+"\n"+"De la surface au sol d'un niveau ? SURFACENIVEAU"+"\n"+"D'un niveau en entier NIVEAU"+"\n"+"De la surface au sol d'un bâtiment ? SURFACEBAT"+"\n"+"D'un bâtiment en entier ? BATIMENT");
+            String reponse=Lire.S();
+            if (reponse.equals("Mur")){
+                System.out.println("De quel mur ?"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                listeMur.getObject(index).montantRevetement();
+            }
+        }
+        System.out.println("Que souhaitez-vous faire ?"+"\n"+"Créer un objet? CREER"+"\n"+"Sauvegarder un bâtiment ? SAUVEGARDER"+"\n"+"Calculer un devis ? DEVIS"+"\n"+"Quitter ? QUITTER");
         S=Lire.S();
         }
         }//fin de la méthode main
