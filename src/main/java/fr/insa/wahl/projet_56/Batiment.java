@@ -32,9 +32,10 @@ public class Batiment {
             batiment.newLine();
             for (int i=0;i<listeNiveau.size();i++){
                 Niveau niveau=listeNiveau.getObject(i);
-                batiment.write(niveau.toString());
+                String niv=niveau.toString();
+                batiment.write(niv);
                 batiment.newLine();
-                for (int k=0;k<niveau.getListe().size();k++){
+                /*for (int k=0;k<niveau.getListe().size();k++){
                     Appartement appart=niveau.getListe().getObject(k);
                     batiment.write(appart.toString());
                     batiment.newLine();
@@ -52,7 +53,7 @@ public class Batiment {
                             batiment.newLine();
                         }
                     }
-            }
+            }*/
             }
             }
         catch (IOException err)
