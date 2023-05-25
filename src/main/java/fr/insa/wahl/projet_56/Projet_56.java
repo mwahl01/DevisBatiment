@@ -55,9 +55,6 @@ public class Projet_56 {
         catch (IOException err){
             System.out.println(" Erreur :\n "+err);}
         
-        /*System.out.println(pourMur.toString());
-        System.out.println(pourSol.toString());
-        System.out.println(pourPlafond.toString());*/
         Numeroteur<Coin> listeCoin=new Numeroteur<Coin>();
         Numeroteur<Mur> listeMur=new Numeroteur<Mur>();
         Numeroteur<Sol> listeSol=new Numeroteur<Sol>();
@@ -117,6 +114,15 @@ public class Projet_56 {
                     System.out.println("Entrer le nombre de fenêtres sur le mur");
                     int nbreFenetre=Lire.i();
                     Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    System.out.println("Quel(s) revêtement(s) souhaitez-vous utiliser ? Tant que vous souhaitez en ajouter : CONTINUER, sinon ARRETER");
+                    String rev=Lire.S();
+                    while(rev.equals("CONTINUER")){
+                        System.out.println(pourMur.toString()+"\n"+"Donnez l'index");
+                        int ind=Lire.i();
+                        listeRevetement.add(pourMur.getObject(ind));
+                        System.out.println("Quel(s) revêtement(s) souhaitez-vous utiliser ? Tant que vous souhaitez en ajouter : CONTINUER, sinon ARRETER");
+                        rev=Lire.S();
+                    }
                     Mur mur=new Mur(id,debut,fin,nbrePorte,nbreFenetre,listeRevetement);
                     listeMur.add(mur);
                     System.out.println("Voulez-vous continuer ?");
@@ -148,6 +154,15 @@ public class Projet_56 {
                     System.out.println("Entrez le nombre de tremie présent sur le sol");
                     int nbreTremie=Lire.i();
                     Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    System.out.println("Quel(s) revêtement(s) souhaitez-vous utiliser ? Tant que vous souhaitez en ajouter : CONTINUER, sinon ARRETER");
+                    String rev=Lire.S();
+                    while(rev.equals("CONTINUER")){
+                        System.out.println(pourSol.toString()+"\n"+"Donnez l'index");
+                        int ind=Lire.i();
+                        listeRevetement.add(pourSol.getObject(ind));
+                        System.out.println("Quel(s) revêtement(s) souhaitez-vous utiliser ? Tant que vous souhaitez en ajouter : CONTINUER, sinon ARRETER");
+                        rev=Lire.S();
+                    }
                     Sol sol=new Sol(idSol,nbreTremie,petiteListe,listeRevetement);
                     listeSol.add(sol);
                     System.out.println("Voulez-vous continuer ?");
@@ -179,6 +194,15 @@ public class Projet_56 {
                     System.out.println("Entrez le nombre de tremie présent sur le plafond");
                     int nbreTremie=Lire.i();
                     Numeroteur<Revetement> listeRevetement=new Numeroteur<Revetement>();
+                    System.out.println("Quel(s) revêtement(s) souhaitez-vous utiliser ? Tant que vous souhaitez en ajouter : CONTINUER, sinon ARRETER");
+                    String rev=Lire.S();
+                    while(rev.equals("CONTINUER")){
+                        System.out.println(pourPlafond.toString()+"\n"+"Donnez l'index");
+                        int ind=Lire.i();
+                        listeRevetement.add(pourPlafond.getObject(ind));
+                        System.out.println("Quel(s) revêtement(s) souhaitez-vous utiliser ? Tant que vous souhaitez en ajouter : CONTINUER, sinon ARRETER");
+                        rev=Lire.S();
+                    }
                     Plafond plafond=new Plafond(idPlafond,nbreTremie,petiteListe,listeRevetement);
                     listePlafond.add(plafond);
                     System.out.println("Voulez-vous continuer ?");
@@ -372,12 +396,12 @@ public class Projet_56 {
             if (reponse.equals("MUR")){
                 System.out.println("De quel mur ?"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
                 int index=Lire.i();
-                listeMur.getObject(index).montantRevetement();
+                System.out.println("montant="+listeMur.getObject(index).montantRevetement());
             }
             if (reponse.equals("SOL")){
                 System.out.println("De quel sol ?"+"\n"+listeSol.toString()+"\n"+"Donnez l'indexe");
                 int index=Lire.i();
-                listeSol.getObject(index).montantRevetement();
+                System.out.println("montant="+listeSol.getObject(index).montantRevetement());
             }
             if (reponse.equals("PLAFOND")){
                 System.out.println("De quel plafond ?"+"\n"+listePlafond.toString()+"\n"+"Donnez l'indexe");
