@@ -348,7 +348,7 @@ public class Projet_56 {
         }//Fin création bâtiment
         }//Fin création d'objets
         
-        //Sauvegarder un bâtiment
+//Sauvegarder un bâtiment
         if (S.equals("SAUVEGARDER")){
             if (listeBatiment.size()==0){
                 System.out.println("Vous devez créer un nouveau bâtiment");
@@ -361,15 +361,88 @@ public class Projet_56 {
             }
         }
         
-        
+// Faire un devis
         if (S.equals("DEVIS")){
             System.out.println("De quoi voulez-vous faire le devis ?"+"\n"+"D'un mur ? MUR"+"\n"+"D'un sol ? SOL"+"\n"+"D'un plafond ? PLAFOND"+"\n"+"De la surface au sol d'une pièce ? SURFACESOL"+"\n"+"D'une pièce entière (mur+sol+plafond)? PIECE"+"\n"+"De la surface au sol d'un appartement ? SURFACEAPPART"+"\n"+"D'un appartement en entier ? APPART"+"\n"+"De la surface au sol d'un niveau ? SURFACENIVEAU"+"\n"+"D'un niveau en entier NIVEAU"+"\n"+"De la surface au sol d'un bâtiment ? SURFACEBAT"+"\n"+"D'un bâtiment en entier ? BATIMENT");
             String reponse=Lire.S();
-            if (reponse.equals("Mur")){
+            if ((!reponse.equals("SOL"))&&(reponse.equals("MUR"))&&(reponse.equals("PLAFOND"))&&(reponse.equals("SURFACESOL"))&&(reponse.equals("PIECE"))&&(reponse.equals("SURFACEAPPART"))&&(reponse.equals("APPART"))&&(reponse.equals("SURFACENIVEAU"))&&(reponse.equals("NIVEAU"))&&(reponse.equals("SURFACEBAT"))&&(reponse.equals("BATIMENT"))){
+                System.out.println("Veuillez entrez un objet correct");
+            }
+            else {
+            if (reponse.equals("MUR")){
                 System.out.println("De quel mur ?"+"\n"+listeMur.toString()+"\n"+"Donnez l'indexe");
                 int index=Lire.i();
                 listeMur.getObject(index).montantRevetement();
             }
+            if (reponse.equals("SOL")){
+                System.out.println("De quel sol ?"+"\n"+listeSol.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                listeSol.getObject(index).montantRevetement();
+            }
+            if (reponse.equals("PLAFOND")){
+                System.out.println("De quel plafond ?"+"\n"+listePlafond.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                listePlafond.getObject(index).montantRevetement();
+            }
+            if (reponse.equals("SURFACESOL")){
+                System.out.println("De quel pièce voulez-vous faire la surface au sol ?"+"\n"+listePiece.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                listePiece.getObject(index).getSol().montantRevetement();
+            }
+            if (reponse.equals("PIECE")){
+                System.out.println("De quel pièce ?"+"\n"+listePiece.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                listePiece.getObject(index).montantRevetement();
+            }
+            if (reponse.equals("SURFACEAPPART")){
+                System.out.println("De quel appartement voulez-vous faire la surface au sol ?"+"\n"+listeAppart.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                double surface=0;
+                for (int j=0;j<listeAppart.getObject(index).getListe().size();j++){
+                    surface=surface+listeAppart.getObject(index).getListe().getObject(j).montantRevetement();
+                }
+            }
+            if (reponse.equals("APPART")){
+                System.out.println("De quel appartement ?"+"\n"+listeAppart.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                listeAppart.getObject(index).montantRevetement();
+            }
+            if (reponse.equals("SURFACENIVEAU")){
+                System.out.println("De quel niveau voulez-vous faire la surface au sol ?"+"\n"+listeNiveau.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                double surface=0;
+                for (int j=0;j<listeNiveau.getObject(index).getListe().size();j++){
+                    for(int k=0;k<listeNiveau.getObject(index).getListe().getObject(j).getListe().size();k++){
+                        surface=surface+listeNiveau.getObject(index).getListe().getObject(j).getListe().getObject(k).getSol().montantRevetement();
+                    }
+                }
+            }
+            if (reponse.equals("NIVEAU")){
+                System.out.println("De quel niveau ?"+"\n"+listeNiveau.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                listeNiveau.getObject(index).montantRevetement();
+            }
+            if (reponse.equals("SURFACEBAT")){
+                System.out.println("De quel bâtiment voulez-vous faire la surface au sol ?"+"\n"+listeBatiment.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                double surface=0;
+                for (int j=0;j<listeBatiment.getObject(index).getListe().size();j++){
+                    for(int k=0;k<listeBatiment.getObject(index).getListe().getObject(j).getListe().size();k++){
+                        for(int i=0;i<listeBatiment.getObject(index).getListe().getObject(j).getListe().getObject(k).getListe().size();i++){
+                            surface=surface+listeBatiment.getObject(index).getListe().getObject(j).getListe().getObject(k).getListe().getObject(i).getSol().montantRevetement();
+                        }
+                    }
+                }
+            }
+            if (reponse.equals("BATIMENT")){
+                System.out.println("De quel bâtiment ?"+"\n"+listeBatiment.toString()+"\n"+"Donnez l'indexe");
+                int index=Lire.i();
+                double devis=0;
+                for(int i=0;i<listeBatiment.getObject(index).getListe().size();i++){
+                    devis=devis+listeBatiment.getObject(index).getListe().getObject(i).montantRevetement();
+                }
+            }
+        }
         }
         System.out.println("Que souhaitez-vous faire ?"+"\n"+"Créer un objet? CREER"+"\n"+"Sauvegarder un bâtiment ? SAUVEGARDER"+"\n"+"Calculer un devis ? DEVIS"+"\n"+"Quitter ? QUITTER");
         S=Lire.S();
